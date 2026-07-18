@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#ffb6c1;
+    overflow:hidden;
+}
+
+.page{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hidden{
+    display:none;
+}
+
+h1,p{
+    color:white;
+    text-shadow:2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.letter,.heart{
+    font-size:100px;
+    cursor:pointer;
+    animation:float 1.2s infinite;
+}
+
+.btn{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.yes{
+    background:#ff1493;
+    color:white;
+}
+
+.no{
+    background:white;
+    color:#ff1493;
+}
+
+#result{
+    margin-top:20px;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-15px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Page 1 -->
+<div class="page" id="page1">
+    <h1></h1>
+    <div class="letter" onclick="openPage2()">💌</div>
+</div>
+
+<!-- Page 2 -->
+<div class="page hidden" id="page2">
+    <p style="font-size:28px;">Mere Dil Ki Baat Jaanne Ke Liye</p>
+    <p style="font-size:28px;">Dil Par Click Karo ❤️</p>
+    <div class="heart" onclick="openPage3()">❤️</div>
+</div>
+
+<!-- Page 3 -->
+<div class="page hidden" id="page3">
+    <h1 style="font-size:50px;">I LOVE YOU ❤️</h1>
+    <p style="font-size:28px;">Do You Love Me?</p>
+
+    <div>
+        <button class="btn yes" onclick="yesLove()">YES</button>
+        <button class="btn no" onclick="noLove()">NO</button>
+    </div>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function openPage2(){
+    document.getElementById("bgMusic").play();
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+}
+
+function openPage3(){
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("page3").classList.remove("hidden");
+}
+
+function yesLove(){
+    document.getElementById("result").innerHTML =
+    "Yayyy! ❤️ I Love You Too ❤️";
+}
+
+function noLove(){
+    document.getElementById("result").innerHTML =
+    "Main Fir Bhi Apse Bahut Pyaar Karta Hoon ❤️";
+}
+</script>
+
+</body>
+</html>
