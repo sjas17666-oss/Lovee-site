@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry My Love ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    text-align:center;
+}
+
+.page{
+    display:none;
+    width:100%;
+    padding:20px;
+}
+
+.active{
+    display:block;
+}
+
+h1,h2{
+    color:#fff;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.cry-img{
+    width:180px;
+    cursor:pointer;
+    animation:rotate 3s linear infinite;
+}
+
+@keyframes rotate{
+    from{transform:rotateY(0deg);}
+    to{transform:rotateY(360deg);}
+}
+
+.message{
+    max-width:700px;
+    margin:auto;
+    color:white;
+    font-size:24px;
+    line-height:1.8;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.btnEmoji{
+    font-size:80px;
+    cursor:pointer;
+    margin:15px;
+    transition:.3s;
+}
+
+.btnEmoji:hover{
+    transform:scale(1.2);
+}
+
+.sorry{
+    font-size:60px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.1);}
+}
+
+.nextBtn{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* Anniversary */
+
+.candles{
+    font-size:45px;
+    animation:flicker .8s infinite alternate;
+}
+
+@keyframes flicker{
+    from{opacity:1;}
+    to{opacity:.5;}
+}
+
+.cake{
+    font-size:140px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.cake:hover{
+    transform:scale(1.1);
+}
+
+#anniversaryMsg{
+    display:none;
+    margin-top:20px;
+}
+
+.hearts{
+    position:absolute;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    font-size:28px;
+    animation:float 4s linear forwards;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<audio id="bgmusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+    <img src="cry.png"
+         class="cry-img"
+         onclick="startMusic();showPage(2)">
+
+    <h2>Click Me 🥺</h2>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+
+    <div class="message">
+        Shayad "Sorry" ek chhota sa shabd hai,<br>
+        lekin mere dil ka pachtawa bahut bada hai.<br><br>
+
+        Main roz ye sochta hoon ki kaash maine
+        wo galti na ki hoti.<br><br>
+
+        Please mujhe maaf kar do. 😭❤️
+    </div>
+
+    <br><br>
+
+    <span class="btnEmoji" onclick="showPage(3)">😭</span>
+    <span class="btnEmoji" onclick="showPage(3)">😢</span>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+
+    <h1 class="sorry">💔 I AM SORRY 💔</h1>
+
+    <br>
+
+    <h2>Please Mujhe Maaf Kar Do 🥺❤️</h2>
+
+    <br><br>
+
+    <button class="nextBtn" onclick="showPage(4)">
+        Anniversary Surprise ❤️
+    </button>
+
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+
+    <h1>🎉 Hamari Anniversary Aa Rahi Hai ❤️ 🎉</h1>
+
+    <br>
+
+    <div class="candles">
+        🕯️ 🕯️ 🕯️
+    </div>
+
+    <div class="cake" id="cake" onclick="cutCake()">
+        🎂
+    </div>
+
+    <h2>Cake Ko Touch Karo 🎂❤️</h2>
+
+    <div id="anniversaryMsg">
+
+        <h1>🍰 Cake Cut Gaya! 🍰</h1>
+
+        <br>
+
+        <h2>
+            Happy Anniversary In advance My Love ❤️<br>
+            Bas Apki Muskaan Chahiye 🥺💖
+        </h2>
+
+    </div>
+
+</div>
+
+<script>
+
+function showPage(pageNo){
+    document.querySelectorAll('.page').forEach(page=>{
+        page.classList.remove('active');
+    });
+
+    document.getElementById('page'+pageNo)
+    .classList.add('active');
+}
+
+function startMusic(){
+    document.getElementById('bgmusic').play();
+}
+
+function cutCake(){
+
+    document.getElementById('cake').innerHTML='🍰';
+
+    document.getElementById('anniversaryMsg')
+    .style.display='block';
+
+    for(let i=0;i<35;i++){
+
+        let heart=document.createElement('div');
+
+        heart.className='heart';
+        heart.innerHTML='❤️';
+
+        heart.style.left=Math.random()*100+'%';
+        heart.style.animationDuration=
+        (Math.random()*3+2)+'s';
+
+        document.getElementById('hearts')
+        .appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },5000);
+    }
+}
+
+</script>
+
+</body>
+</html>
